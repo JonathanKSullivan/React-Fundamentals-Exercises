@@ -15,7 +15,7 @@ const App = () => {
 
   return (
   <div className="container">
-    <img src={logo}></img>
+    <img src={logo} alt="React logo" ></img>
     <h1>{name}</h1>
     <p>{aboutReact(facts)}</p>
   </div>

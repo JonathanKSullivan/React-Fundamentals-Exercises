@@ -1,6 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import PageHeader from "./components/PageHeader";
+import ShoppingForm from "./components/ShoppingForm";
+import ItemList from "./components/ItemList";
+
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -26,31 +30,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">ReactND - Coding Practice</h1>
-      </header>
+      <PageHeader logo={logo} />
       <h2>Shopping List</h2>
-      <form onSubmit={addItem}>
-        <input
-          type="text"
-          placeholder="Enter New Item"
-          value={value}
-          onChange={handleChange}
-        />
-        <button disabled={inputIsEmpty()}>Add</button>
-      </form>
-
-      <button onClick={deleteLastItem} disabled={noItemsFound()}>
-        Delete Last Item
-      </button>
-
-      <p className="items">Items</p>
-      <ol className="item-list">
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ol>
+      <ShoppingForm value={value} handleChange={handleChange} inputIsEmpty={inputIsEmpty} addItem={addItem} deleteLastItem={deleteLastItem} noItemsFound={noItemsFound} />
+      <ItemList items={items}>  </ItemList>
     </div>
   );
 };
